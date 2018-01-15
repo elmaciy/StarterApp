@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+
+<div th:replace="/home/fragments/header :: header-css" />
+
+</head>
+<body>
+
+	<div th:fragment="main">
+
+		<div class="jumbotron" align="center">
+			<label  th:if="${fragmentPath}" class="label label-danger" th:text="'Invalid fragment path : '+${fragmentPath}"></label>
+			<hr/>
+			<img src="/images/logo.png"/>
+			<hr/>
+		</div>
+
+	</div>
+</body>
+</html>

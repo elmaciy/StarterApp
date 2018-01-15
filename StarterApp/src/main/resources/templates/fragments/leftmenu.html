@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div th:fragment="leftmenu">
+
+		<ul class="nav nav-sidebar">
+				<li th:each="menu : ${subMenuList}" th:class="${menu.id==activeSubMenuId} ? 'active':'inactive'">
+					<a th:href="'javascript:subMenuAction(\''+${menu.id}+'\',\''+${menu.target}+'\');'" th:text="${menu.menuLabel}"/>
+				</li>
+			</ul>
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+
+
+<div th:fragment="header-css">
+       
+        <script src="webjars/jquery/3.1.0/jquery.min.js" />
+        
+        
+        <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+        <link rel="stylesheet" th:href="@{/css/dashboard.css}" href="../../css/dashboard.css" />
+        <link rel="stylesheet" th:href="@{/css/signin.css}" href="../../css/signin.css" />
+        
+
+        
+        <script th:src="@{/js/common.js}" src="../../js/common.js" />
+        <script th:src="@{/js/app.js}" src="../../js/app.js" />
+        
+    </div>
+
+</head>
+<body>
+
+	<div th:fragment="header">
+
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+
+					<ul class="nav navbar-nav navbar-right">
+						
+						<li th:each="menu : ${mainMenuList}" th:class="${menu.id==activeMainMenuId} ? 'active':'inactive'">
+							<a th:href="'javascript:mainMenuClick('+${menu.id}+')'" th:text="${menu.menuLabel}" >
+							Menu Item
+							</a>
+						</li>
+							
+					</ul>
+				</div>
+				
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<!--  <li><a class="navbar-brand" href="/"><img th:src="@{/images/logo.png}" height="30px" width="100px"/></a></li>  -->
+						
+						<li>
+						<div class="input group">
+							<select size="1" id="listOfLanguage" class="form-control version-selector" onChange="changeLanguage();">
+							<option th:each=" lang : ${languageList}" th:text="${lang.languageName}+' ('+${lang.shortCode}+')'" th:value="${lang.id}" th:selected="${lang.id==currentLanguageId ? 'true' : 'false'}"></option>
+							</select>
+						</div>
+						</li>
+					</ul>
+					
+
+				</div>
+			</div>
+		</nav>
+
+	</div>
+
+
+</body>
+</html>
